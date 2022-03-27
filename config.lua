@@ -16,8 +16,8 @@ Config.HackSquares = 2 -- amount of squares player needs to hack
 Config.HackRepeat = 1 -- amount of time player needs to do the hack before success
 
 -- bomb
-Config.BombTime = 30 -- timer that bomb needs to explode
-Config.BombItem = 'thermite' -- item needed to be able to place bombC
+Config.BombTime = 60 -- timer that bomb needs to explode in seconds
+Config.BombItem = 'thermite' -- item needed to be able to place bomb
 Config.BombBlocks = 2 -- Number of correct blocks the player needs to click
 Config.BombBlocksFail = 2 -- number of incorrect blocks after which the game will fail
 Config.BombShowTime = 5 -- time in secs for which the right blocks will be shown

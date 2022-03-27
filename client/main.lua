@@ -548,7 +548,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(1)
         if lightsoff then
             SetArtificialLightsState(true)
-            BlackoutTimer = BlackoutTimer - 1
+            BlackoutTimer = BlackoutTimer - 9
             if BlackoutTimer <= 0 then
                 SetArtificialLightsState(false)
                 TriggerServerEvent('nxte-mrpd:server:SetPower', false)
