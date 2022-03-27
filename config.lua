@@ -5,23 +5,23 @@ Config.NightvisionHelmetOn = 116 -- this is the 'hat' model for the night vision
 Config.NightVisionHelmetOff = 117 -- this is the 'hat' model for the night vision while having it off
 
 -- mrpd heist
-Config.MinCop = 1 -- minimin amount of on duty officers to be able to do the heist
+Config.MinCop = 4 -- minimin amount of on duty officers to be able to do the heist
 Config.JobPrice = 10000 -- price to pay to start the job
 Config.TimeOut = 30 -- time between the heist being able to be done in minuits
 
 -- hack 
 Config.HackItem = 'trojan_usb' -- item needed to be able to do the hack 
-Config.HackTime = 20 -- time player has to do the hack
-Config.HackSquares = 2 -- amount of squares player needs to hack 
-Config.HackRepeat = 1 -- amount of time player needs to do the hack before success
+Config.HackTime = 12 -- time player has to do the hack
+Config.HackSquares = 4 -- amount of squares player needs to hack 
+Config.HackRepeat = 2 -- amount of time player needs to do the hack before success
 
 -- bomb
 Config.BombTime = 60 -- timer that bomb needs to explode in seconds
 Config.BombItem = 'thermite' -- item needed to be able to place bomb
-Config.BombBlocks = 2 -- Number of correct blocks the player needs to click
-Config.BombBlocksFail = 2 -- number of incorrect blocks after which the game will fail
+Config.BombBlocks = 5 -- Number of correct blocks the player needs to click
+Config.BombBlocksFail = 1 -- number of incorrect blocks after which the game will fail
 Config.BombShowTime = 5 -- time in secs for which the right blocks will be shown
-Config.BombHackTime = 10--maximum time after timetoshow expires for player to select the right blocks
+Config.BombHackTime = 5 --maximum time after timetoshow expires for player to select the right blocks
 
 
 -- blackout 
@@ -39,7 +39,7 @@ Config.Loot2MaxAmount = 3
 
 
 -- NPC
-
+Config.SpawnPeds = true -- if you want the peds to spawn or not
 --NPC
 Config.PedGun = 'weapon_assaultrifle' -- weapon NPC's use
 

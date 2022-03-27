@@ -120,7 +120,9 @@ local PlantBomb = function()
         Wait((Config.BombTime * 1000)/2)
         DeleteEntity(charge)  
         AddExplosion(477.31, -1083.33, 44, 50, 5.0, true, false, 15.0)
-        TriggerEvent('nxte-mrpd:client:SpawnNPC', 1)
+        if Config.SpawnPeds then
+            TriggerEvent('nxte-mrpd:client:SpawnNPC', 1)
+        end
         TriggerServerEvent('nxte-mrpd:server:SetPower', true)
         QBCore.Functions.Notify('You cut the power to the city! Go to MRPD', 'success')
     end)
