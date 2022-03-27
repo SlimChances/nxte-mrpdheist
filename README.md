@@ -7,7 +7,7 @@ Features:
 - Blackout 
 - NPC's 
  
-TO DO :
+TO DO BEFORE USE:
 - add the pictures in the images folder to your inventory/html/images folder
 - add next code to your qb-core/shared/items.lua :
 - ['nightgoggles'] 			 		= {['name'] = 'nightgoggles', 					['label'] = 'Night vision helmet', 		['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'nightvision.png', 			['unique'] = true, 		['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A high-tier military night vision helmet'},
