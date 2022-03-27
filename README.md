@@ -2,10 +2,14 @@
  Free open-source MRPD heist easy to adjust to your server with the config.lua
 
 Features:
+- easy adjustable difficulty for the hack (config.lua)
+- easy adjustable difficulty for the bomb (config.lua)
+- easy adjustable loot (config.lua)
+- easy adjustable blackout (config.lua)
+- easy adjustable NPC's (config.lua)
 - server synced
 - Night vision goggles
-- Blackout 
-- NPC's 
+
  
 TO DO BEFORE USE:
 - add the pictures in the images folder to your inventory/html/images folder
