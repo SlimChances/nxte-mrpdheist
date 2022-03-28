@@ -25,7 +25,7 @@ Config.BombHackTime = 5 --maximum time after timetoshow expires for player to se
 
 
 -- blackout 
-Config.BlackoutTime = 1 -- how long the blackout lasts for in minuits
+Config.BlackoutTime = 15 -- how long the blackout lasts for in minuits
 
 -- loot 1
 Config.Loot1Item = 'weapon_combatpistol'

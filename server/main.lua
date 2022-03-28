@@ -4,7 +4,6 @@ local isActive = false
 local CopCount = 0
 local isHacked = false
 local isExploded = false
-local lightsoff = false
 local hasKey = false
 local isLooted1 = false
 local isLooted2 = false
@@ -67,16 +66,6 @@ RegisterNetEvent('nxte-mrpd:server:SetBomb', function(status)
         TriggerClientEvent('nxte-mrpd:client:SetBomb', -1, status)
     else 
         TriggerClientEvent('nxte-mrpd:client:SetBomb', -1, isExploded)
-    end 
-end)
-
--- changing power status
-RegisterNetEvent('nxte-mrpd:server:SetPower', function(status)
-    if status ~= nil then 
-        lightsoff = status 
-        TriggerClientEvent('nxte-mrpd:client:SetPower', -1, status)
-    else 
-        TriggerClientEvent('nxte-mrpd:client:SetPower', -1, lightsoff)
     end 
 end)
 

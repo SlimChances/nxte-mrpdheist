@@ -19,7 +19,6 @@ local isLooted1 = false
 local isLooted2 = false
 
 -- blackout
-local lightsoff = false
 local BlackoutTimer = (Config.BlackoutTime*60000)
 
 
@@ -123,7 +122,7 @@ local PlantBomb = function()
         if Config.SpawnPeds then
             TriggerEvent('nxte-mrpd:client:SpawnNPC', 1)
         end
-        TriggerServerEvent('nxte-mrpd:server:SetPower', true)
+        TriggerEvent('nxte-mrpd:client:setBlackout')
         QBCore.Functions.Notify('You cut the power to the city! Go to MRPD', 'success')
     end)
 end
@@ -381,7 +380,11 @@ RegisterNetEvent('nxte-mrpd:client:bomb', function()
     end)
 end)
 
-
+RegisterNetEvent('nxte-mrpd:client:setBlackout', function()
+    TriggerServerEvent("qb-weathersync:server:toggleBlackout")
+    Citizen.Wait(BlackoutTimer)
+    TriggerServerEvent("qb-weathersync:server:toggleBlackout")
+end)
 
 -- grab key
 RegisterNetEvent('nxte-mrpd:client:grabkey', function()
@@ -527,10 +530,6 @@ RegisterNetEvent('nxte-mrpd:client:SetBomb', function(status)
     isExploded = status
 end)
 
-RegisterNetEvent('nxte-mrpd:client:SetPower', function(status)
-    lightsoff = status
-end)
-
 RegisterNetEvent('nxte-mrpd:client:SetKey', function(status)
     hasKey = status
 end)
@@ -543,22 +542,6 @@ RegisterNetEvent('nxte-mrpd:client:SetLoot2', function(status)
     isLooted2 = status
 end)
 -------------------------------------------------------- Threads ----------------------------------------------------
-
--- blackout 
-Citizen.CreateThread(function()
-    while true do 
-        Citizen.Wait(1)
-        if lightsoff then
-            SetArtificialLightsState(true)
-            BlackoutTimer = BlackoutTimer - 9
-            if BlackoutTimer <= 0 then
-                SetArtificialLightsState(false)
-                TriggerServerEvent('nxte-mrpd:server:SetPower', false)
-            end
-        end
-    end
-
-end)
 
 -- reset heist 
 Citizen.CreateThread(function()
