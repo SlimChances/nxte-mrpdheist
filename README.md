@@ -20,6 +20,7 @@ TO DO BEFORE USE:
 
 PREVIEW : https://medal.tv/games/gta-v/clips/fLicm3mCTq4At/d1337nkc2UXF?invite=cr-MSwzUk8sMjM3NTk3MjEs
 
+- NPC code from : github.com/Lionh34rt
 
 Dependency's:
 - Hack : https://github.com/Prime-Script/prime-vangelico/tree/main/assets ( hacking folder )
