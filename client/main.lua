@@ -353,6 +353,7 @@ RegisterNetEvent('nxte-mrpd:client:bomb', function()
                             -- trigger bomb animation
                             TriggerServerEvent('nxte-mrpd:server:SetBomb', true)
                             HeistBlip()
+			    RemoveBlip(bombBlip)
                             TriggerServerEvent('QBCore:Server:RemoveItem', Config.BombItem, 1, slot, info)
                             TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.BombItem], 'remove')
                             PlantBomb()
@@ -551,6 +552,7 @@ Citizen.CreateThread(function()
             RemoveBlip(heistBlip)
             Citizen.Wait(Config.TimeOut*60000)
             TriggerServerEvent('nxte-mrpd:server:ResetMission')
+	    RemoveBlip(heistBlip)		
         end
     end
 end)
@@ -566,6 +568,7 @@ Citizen.CreateThread(function()
                     QBCore.Functions.Notify('Mission Failed', 'error')
                     TriggerServerEvent('nxte-mrpd:server:ResetMission')
                     Citizen.Wait(2000)
+		    RemoveBlip(heistBlip)
                     Buyer = nil
                 end
             end
