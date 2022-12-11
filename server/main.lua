@@ -26,6 +26,38 @@ RegisterNetEvent('nxte-mrpd:server:removemoney', function(amount)
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.RemoveMoney('cash', tonumber(amount))
 end)
+RegisterNetEvent('nxte-mrpd:server:removethermite', function()
+    Player.Functions.RemoveItem('thermite', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['thermite'], "remove")
+end)
+RegisterNetEvent('nxte-mrpd:server:removeusb', function()
+    Player.Functions.RemoveItem('trojan_usb', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['trojan_usb'], "remove")
+end)
+
+RegisterNetEvent('nxte-mrpd:server:giveitem1', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local amount = math.random(Config.Loot1MinAmount, Config.Loot1MaxAmount)
+    Player.Functions.AddItem(Config.Loot1Item, amount)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Loot1Item], "add")
+end)
+RegisterNetEvent('nxte-mrpd:server:giveitem2', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local amount = math.random(Config.Loot2Item, Config.Loot2MaxAmount)
+    Player.Functions.AddItem(Config.Loot2Item, amount)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Loot1Item], "add")
+    Player.Functions.RemoveItem('armorykey', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['armorykey'], "remove")
+end)
+RegisterNetEvent('nxte-mrpd:server:givekey', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local amount = 1
+    Player.Functions.AddItem('armorykey', amount)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['armorykey'], "add")
+end)
 
 -- getting active cops
 RegisterNetEvent('nxte-mrpd:server:GetCops', function()
