@@ -72,15 +72,13 @@ end
 local function OnHackDone(success)
     if success then 
         QBCore.Functions.Notify('Successfully disabled the alarm system , go to the roof to cut the power!', 'success')
-        TriggerServerEvent('QBCore:Server:RemoveItem', Config.HackItem, 1, slot, info)
-        TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.HackItem], 'remove')
+        TriggerServerEvent('nxte-mrpd:server:removeusb')
         RemoveBlip(hackBlip)
         BombBlip()
         TriggerServerEvent('nxte-mrpd:server:SetHack', true)
     else
         QBCore.Functions.Notify('You failed to hack the alarm system!', 'error')
-        TriggerServerEvent('QBCore:Server:RemoveItem', Config.HackItem, 1, slot, info)
-        TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.HackItem], 'remove')
+        TriggerServerEvent('nxte-mrpd:server:removeusb')
     end
 end
 
@@ -322,16 +320,10 @@ RegisterNetEvent('nxte-mrpd:anim:hack', function()
     NetworkStartSynchronisedScene(netScene2)
     Wait(2000)
 
-    exports['hacking']:OpenHackingGame(Config.HackTime, Config.HackSquares, Config.HackRepeat, function(success)
-        NetworkStartSynchronisedScene(netScene3)
-        NetworkStopSynchronisedScene(netScene3)
-        DeleteObject(bag)
-        SetPedComponentVariation(ped, 5, Config.BagUseID, 0, 1)
-        DeleteObject(laptop)
-        FreezeEntityPosition(ped, false)
-        OnHackDone(success)
+    TriggerEvent("mhacking:show")
+    TriggerEvent("mhacking:start", math.random(6, 7), math.random(120, 150), OnHackDone)
     end)
-end)
+
 
 
 RegisterNetEvent('nxte-mrpd:client:bomb', function()
@@ -354,13 +346,11 @@ RegisterNetEvent('nxte-mrpd:client:bomb', function()
                             TriggerServerEvent('nxte-mrpd:server:SetBomb', true)
                             HeistBlip()
 			    RemoveBlip(bombBlip)
-                            TriggerServerEvent('QBCore:Server:RemoveItem', Config.BombItem, 1, slot, info)
-                            TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.BombItem], 'remove')
+                TriggerServerEvent('nxte-mrpd:server:removeusb')
                             PlantBomb()
                         end,
                         function() -- failure
-                            TriggerServerEvent('QBCore:Server:RemoveItem', Config.BombItem, 1, slot, info)
-                            TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.BombItem], 'remove')
+                            TriggerServerEvent('nxte-mrpd:server:removeusb')
                             QBCore.Functions.Notify('You failed to cut the power!', 'success')
     
                         end)
@@ -401,7 +391,7 @@ RegisterNetEvent('nxte-mrpd:client:grabkey', function()
             if isExploded then
                 if not hasKey then
                     TriggerServerEvent('nxte-mrpd:server:SetKey', true)
-                    TriggerServerEvent('QBCore:Server:AddItem', 'armorykey', 1, slot, info)
+                    TriggerServerEvent('nxte-mrpd:server:givekey')
                     TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items['armorykey'], 'add')
                     QBCore.Functions.Notify('You found a MRPD Armory key', 'success')
                 else 
@@ -433,8 +423,7 @@ RegisterNetEvent('nxte-mrpd:client:loot1', function()
                 if not isLooted2 then
                     TriggerServerEvent('nxte-mrpd:server:SetLoot1', true)
                     local amount = math.random(Config.Loot1MinAmount, Config.Loot1MaxAmount)
-                    TriggerServerEvent('QBCore:Server:AddItem', Config.Loot1Item, amount, slot, info)
-                    TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.Loot1Item], 'add', amount)
+                    TriggerServerEvent('nxte-mrpd:server:giveitem1')
                 else 
                     QBCore.Functions.Notify('Someone already grabbed the items in the locker', 'error')
                 end
@@ -463,8 +452,7 @@ RegisterNetEvent('nxte-mrpd:client:loot2', function()
                 if not isLooted2 then
                     TriggerServerEvent('nxte-mrpd:server:SetLoot2', true)
                     local amount = math.random(Config.Loot2MinAmount, Config.Loot2MaxAmount)
-                    TriggerServerEvent('QBCore:Server:AddItem', Config.Loot2Item, amount, slot, info)
-                    TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items[Config.Loot2Item], 'add', amount)
+                    TriggerServerEvent('nxte-mrpd:server:giveitem2')
                 else 
                     QBCore.Functions.Notify('Someone already grabbed the items in the locker', 'error')
                 end
@@ -576,7 +564,3 @@ Citizen.CreateThread(function()
         Citizen.Wait(5000)
     end
 end)
-
-
-
-
