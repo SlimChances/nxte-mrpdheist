@@ -228,7 +228,7 @@ RegisterNetEvent('nxte-mrpd:client:startheist', function()
     }, {}, {}, {}, function() -- Done
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         if not isActive then 
-            --if CopCount >= Config.MinCop then
+            if CopCount >= Config.MinCop then
                 if cash >= Config.JobPrice then
                     HackBlip()
                     Buyer = Player.citizenid
@@ -238,8 +238,8 @@ RegisterNetEvent('nxte-mrpd:client:startheist', function()
                 else
                     QBCore.Functions.Notify("Am i working with an amature here ? Ofcourse i want it in cash", "error")
                 end
-          --  else
-            --    QBCore.Functions.Notify("There is not enough police", "error")
+            else
+                QBCore.Functions.Notify("There is not enough police", "error")
             end
         else
             QBCore.Functions.Notify("No one is answering the door", "error")
