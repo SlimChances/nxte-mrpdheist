@@ -49,7 +49,7 @@ end)
 RegisterNetEvent('nxte-mrpd:server:giveitem2', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local amount = math.random(Config.Loot2Item, Config.Loot2MaxAmount)
+    local amount = math.random(Config.Loot2MinAmount, Config.Loot2MaxAmount)
     Player.Functions.AddItem(Config.Loot2Item, amount)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Loot2Item], "add")
     Player.Functions.RemoveItem('armorykey', 1)
